@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Your Profile</h1>
+<h2>Will be updated soon! For now, you are allowed to change your password below:</h2>
+<form method="POST" class="container">
+    {{ form.hidden_tag() }}
+    {{ form.currentPassword(class='form-control', placeholder='Current Password') }}
+    {{ form.newPassword(class='form-control', placeholder='New Password') }}
+    {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+{% endblock %}

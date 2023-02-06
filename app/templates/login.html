@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <h1 class="container">Welcome back!</h1>
+    <form method="POST" class="container">
+        {{ form.hidden_tag() }}
+        {{ form.username(class='form-control', placeholder='Username') }}
+        {{ form.password(class='form-control', placeholder='Password') }}
+        {{ form.submit(class='btn btn-primary') }} <a>Remember Me {{ form.remember }}</a>
+    </form>
+
+{% endblock %}

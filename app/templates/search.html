@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>Pokedex Results</h1>
+<div class="card mb-3" style="max-width: 540px;"> 
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ front_shiny }}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ name.title() }}</h5>
+          <p class="card-text">Ability: {{ ability.title() }}</p>
+          <p class="card-text">Base XP: {{ base_xp }}</p>
+          <p class="card-text">Base HP: {{ base_hp }}</p>
+          <p class="card-text">Base ATK: {{ base_atk }}</p>
+          <p class="card-text">Base DEF: {{ base_def }}</p>
+        </div>
+        <a class="btn btn-success" href="{{ url_for('search.capturePage', poke_name=name) }}">Capture Pokemon!</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

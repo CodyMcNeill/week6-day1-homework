@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <h1 class="container">Welcome to the Pokedex!</h1>
+    <form method="POST" class="container">
+      {{ form.hidden_tag() }}
+      {{ form.searchBody }}
+      {{ form.search }}
+    </form>
+
+{% endblock %}
+
