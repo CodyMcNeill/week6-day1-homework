@@ -12,7 +12,7 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-login_manager.login_view = "loginUsersPage"
+login_manager.login_view = "users.loginUserPage"
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -21,7 +21,9 @@ def load_user(user_id):
 from app.main.routes import main
 from app.search.routes import search
 from app.users.routes import users
+from app.battle.routes import battle
 
 app.register_blueprint(main)
 app.register_blueprint(search)
 app.register_blueprint(users)
+app.register_blueprint(battle)

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="container"> 
+        <h1>Preparing to battle {{ username.username }}</h1>
+        <h3>Your Team Stats</h3>
+        <p>Stats:</p>
+        <p>Total HP: {{ my_team|sum(attribute='base_hp') }}</p>
+        <p>Total ATK: {{ my_team|sum(attribute='base_atk') }}</p>
+        <p>Total DEF: {{ my_team|sum(attribute='base_def') }}</p>
+    </div>
+
+    <div class="container">
+        <h3>{{ username.username }}'s Team Stats</h3>
+        <p>Stats:</p>
+        <p>Total HP: {{ enemy_team|sum(attribute='base_hp') }}</p>
+        <p>Total ATK: {{ enemy_team|sum(attribute='base_atk') }}</p>
+        <p>Total DEF: {{ enemy_team|sum(attribute='base_def') }}</p>
+    </div>
+    <button class="btn btn-danger" href="{{ url_for('battle.fightPage', username=username) }}">FIGHT! {% set do_battle = True %}</button>
+</div>
+
+
+
+{% endblock %}

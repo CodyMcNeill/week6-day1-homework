@@ -31,13 +31,23 @@ def loginUserPage():
             if user:
                 if user.password == password:
                     login_user(user)
-                    flash('You have successfully logged in!')
-                    return render_template('index.html')
+                    flash(f'You have successfully logged in!')
+                    return redirect(url_for('main.homePage'))
                 else:
-                    flash('Wrong Password')
+                    flash(f'Wrong Password')
+                    return render_template('login.html', form = form)
         else:
-            print('User does not exist')               
+            flash(f'User does not exist')
+            return render_template('login.html', form = form)               
     return render_template('login.html', form = form)
+
+@users.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logoutUserPage():
+        logout_user()
+        flash(f'Succesfully logged out!')
+        return redirect(url_for('main.homePage'))
+            
 
 @users.route('/profile', methods=['GET', 'POST'])
 @login_required

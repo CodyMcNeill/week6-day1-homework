@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="my-team row justify-content-md-center">
+        <h1>Your Team</h1>
+        <p>Stats:</p>
+        <p>Total HP: {{ team|sum(attribute='base_hp') }}</p>
+        <p>Total ATK: {{ team|sum(attribute='base_atk') }}</p>
+        <p>Total DEF: {{ team|sum(attribute='base_def') }}</p>
+        {% for poke in team %}
+        <div class="card mb-3" style="max-width: 540px;"> 
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ poke.front_shiny }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{ poke.name.title() }}</h5>
+                <p class="card-text">Ability: {{ poke.ability.title() }}</p>
+                <p class="card-text">Base XP: {{ poke.base_xp }}</p>
+                <p class="card-text">Base HP: {{ poke.base_hp }}</p>
+                <p class="card-text">Base ATK: {{ poke.base_atk }}</p>
+                <p class="card-text">Base DEF: {{ poke.base_def }}</p>
+                </div>
+                <a class="btn btn-danger" href="{{ url_for('search.releasePage', poke_name=poke.name) }}">Release Pokemon</a>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="enemies col col-lg-2 pt-2">
+        <h1>List of Enemies</h1>
+        {% for enemy in enemies %}
+        <a href="{{ url_for('battle.fightPage', username=enemy.username, do_battle=True) }}">{{ enemy.username }}</a>
+        {% endfor %}   
+    </div>
+    
+</div>
+
+
+{% endblock %}
